@@ -2,8 +2,12 @@
 
 namespace MultiVendorEcommerce.Areas.Admin.Controllers
 {
-    public class HomeController : Controller
+    [Area("admin")]
+    [Route("admin/dashboard")]
+    public class DashboardController : Controller
     {
+        [Route("")]
+        [Route("index")]
         public IActionResult Index()
         {
             return View();

@@ -9,5 +9,9 @@ namespace MultiVendorEcommerce.ViewComponents
         {
             return View("Index");
         }
+        //public IViewComponentResult Invoke()
+        //{
+        //    return View("Index");
+        //}
     }
 }
