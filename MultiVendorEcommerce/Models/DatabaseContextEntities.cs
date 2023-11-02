@@ -37,7 +37,7 @@ public partial class DatabaseContextEntities : DbContext
 
 //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=AADITYA\\SQLEXPRESS;Database=MakeInIndiaShopDB;user id=sa;password=123456;TrustServerCertificate=True");
+//        => optionsBuilder.UseSqlServer("Server=AADITYA\\SQLEXPRESS;Database=MakeInIndiaShopDB;user id=sa;password=123456;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -124,17 +124,17 @@ public partial class DatabaseContextEntities : DbContext
 
         modelBuilder.Entity<InvoiceDetail>(entity =>
         {
-            entity.HasNoKey();
+            entity.HasKey(e => e.Id).HasName("PK__InvoiceD__3214EC072B6BD801");
 
             entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
 
-            entity.HasOne(d => d.Invoice).WithMany()
+            entity.HasOne(d => d.Invoice).WithMany(p => p.InvoiceDetails)
                 .HasForeignKey(d => d.InvoiceId)
-                .HasConstraintName("FK__InvoiceDe__Invoi__534D60F1");
+                .HasConstraintName("FK__InvoiceDe__Invoi__5CD6CB2B");
 
-            entity.HasOne(d => d.Product).WithMany()
+            entity.HasOne(d => d.Product).WithMany(p => p.InvoiceDetails)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__InvoiceDe__Produ__5441852A");
+                .HasConstraintName("FK__InvoiceDe__Produ__5DCAEF64");
         });
 
         modelBuilder.Entity<Membership>(entity =>

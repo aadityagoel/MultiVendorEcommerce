@@ -4,17 +4,19 @@ using System.Collections.Generic;
 
 namespace MultiVendorEcommerce.Models;
 
-public partial class InvoiceDetail
+public partial class InvoiceDetail : IEntity
 {
-    public int InvoiceId { get; set; }
+    public int Id { get; set; }
 
-    public int ProductId { get; set; }
+    public int? InvoiceId { get; set; }
 
-    public decimal Price { get; set; }
+    public int? ProductId { get; set; }
 
-    public int Quantity { get; set; }
+    public decimal? Price { get; set; }
 
-    public virtual Invoice Invoice { get; set; }
+    public int? Quantity { get; set; }
 
-    public virtual Product Product { get; set; }
+    public virtual Invoice? Invoice { get; set; }
+
+    public virtual Product? Product { get; set; }
 }
