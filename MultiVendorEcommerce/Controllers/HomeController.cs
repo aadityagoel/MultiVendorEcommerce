@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 namespace MultiVendorEcommerce.Controllers
 {
+    [Route("home")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -13,6 +14,9 @@ namespace MultiVendorEcommerce.Controllers
             _logger = logger;
         }
 
+        [Route("index")]
+        [Route("")]
+        [Route("~/")]
         public IActionResult Index()
         {
             return View();

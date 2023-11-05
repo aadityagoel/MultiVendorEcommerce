@@ -8,7 +8,7 @@ public partial class Account : IEntity
 {
     public int Id { get; set; }
 
-    public string? Username { get; set; }
+    public string Username { get; set; }
 
     public string? Password { get; set; }
 
@@ -40,5 +40,5 @@ public partial class Account : IEntity
 
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
-    public virtual Role? Role { get; set; }
+    public virtual Role Role { get; set; }
 }
