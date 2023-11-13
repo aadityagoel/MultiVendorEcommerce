@@ -9,5 +9,18 @@ namespace MultiVendorEcommerce.Repositories
         {
 
         }
+
+        public Account Login(string username, string password, int roleId)
+        {
+            var account = GetAll().SingleOrDefault(a=>a.Username.Equals(username) && a.RoleId== roleId && a.Status);
+            if (account != null)
+            {
+                if(BCrypt.Net.BCrypt.Verify(password, account.Password))
+                {
+                    return account;
+                }
+            }
+            return null;
+        }
     }
 }

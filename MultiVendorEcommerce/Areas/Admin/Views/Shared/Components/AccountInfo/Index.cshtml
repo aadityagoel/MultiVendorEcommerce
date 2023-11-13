@@ -1,0 +1,14 @@
+﻿@using System.Security.Claims;
+@{
+    var user = User.FindFirst(ClaimTypes.Name);
+    var role = User.FindFirst(ClaimTypes.Role);
+}
+
+<a class="menu-link" asp-area="@role.Value.ToLower()" asp-controller="login" asp-action="profile">
+    <i class="icon material-icons md-person"></i>
+    <span class="text">Hi @user.Value! (@role.Value)</span>
+</a>
+
+@*@if(role.Value.Equals("Admin")){
+
+}*@
