@@ -10,7 +10,7 @@ public partial class Category : IEntity
 
     public string Name { get; set; } = null!;
 
-    public bool? Status { get; set; }
+    public bool Status { get; set; }
 
     public int ParentId { get; set; }
 

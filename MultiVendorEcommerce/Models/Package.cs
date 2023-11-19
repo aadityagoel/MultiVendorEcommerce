@@ -12,7 +12,7 @@ public partial class Package : IEntity
 
     public string? Description { get; set; }
 
-    public bool? Status { get; set; }
+    public bool Status { get; set; }
 
     public decimal Price { get; set; }
 

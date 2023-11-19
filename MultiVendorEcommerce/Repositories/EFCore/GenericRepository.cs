@@ -40,5 +40,11 @@ namespace MultiVendorEcommerce.Repositories.EFCore
             _dbContext.Set<TEntity>().Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<TEntity> GetByIdNoTracking(int id)
+        {
+            return await _dbContext.Set<TEntity>().AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

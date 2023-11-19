@@ -10,7 +10,7 @@ public partial class SlideShow : IEntity
 
     public string Name { get; set; } = null!;
 
-    public bool? Status { get; set; }
+    public bool Status { get; set; }
 
     public string Title { get; set; } = null!;
 

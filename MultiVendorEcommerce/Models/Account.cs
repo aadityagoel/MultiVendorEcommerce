@@ -34,6 +34,8 @@ public partial class Account : IEntity
 
     public string? StoreLogo { get; set; }
 
+    public string? ActualPassword { get; set; }
+
     public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
 
     public virtual ICollection<Membership> Memberships { get; set; } = new List<Membership>();

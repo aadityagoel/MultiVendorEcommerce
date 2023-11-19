@@ -12,7 +12,7 @@ public partial class Invoice : IEntity
 
     public DateTime? Created { get; set; }
 
-    public bool? Status { get; set; }
+    public bool Status { get; set; }
 
     public int AccountId { get; set; }
 
