@@ -1,0 +1,58 @@
+﻿@model MultiVendorEcommerce.Models.Package
+@{
+    ViewData["Title"] = "Add Package";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-main">
+    <form method="post" asp-area="admin" asp-controller="package" asp-action="add" role="form">
+        <div class="row">
+            <div class="col-12">
+                <div class="content-header">
+                    <h2 class="content-title">@ViewData["Title"]</h2>
+                    <div>
+                        @*<button class="btn btn-light rounded font-sm mr-5 text-body hover-up">Save to draft</button>*@
+                        <button class="btn btn-md rounded font-sm hover-up" type="submit">Publish</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <label for="package_name" class="form-label">Package Name</label>
+                            <input type="text" asp-for="Name" placeholder="Type here" class="form-control" id="package_name" />
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Package Description</label>
+                            <textarea placeholder="Type here" asp-for="Description" class="form-control" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <!-- card end// -->
+            </div>
+            <div class="col-lg-3">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <label class="form-label">Price</label>
+                            <input type="text" asp-for="Price" placeholder="Type here" class="form-control" />
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Duration(Months)</label>
+                            <input type="text" asp-for="Duration" placeholder="Type here" class="form-control" />
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="Status" asp-for="Status" />
+                            <label class="form-check-label" for="Status"> Status </label>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- card end// -->
+            </div>
+
+        </div>
+    </form>
+</section>
+

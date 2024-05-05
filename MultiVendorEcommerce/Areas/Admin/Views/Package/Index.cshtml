@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Packages";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <section class="content-main">
+        <div class="content-header">
+            <div>
+                <h2 class="content-title card-title">@ViewData["Title"]</h2>
+                <p>Packages for Vendors</p>
+            </div>
+            <div>
+                <a href="#" class="btn btn-light rounded font-md">Export</a>
+                <a href="#" class="btn btn-light rounded font-md">Import</a>
+                <a class="btn btn-primary btn-sm rounded" asp-area="admin" asp-controller="package" asp-action="add">Create new</a>
+            </div>
+        </div>
+        @if (TempData["error"] != null)
+        {
+            <div class="alert-danger alert-dismissible rounded p-3 mb-1">
+                <h5>Alert!</h5>
+                <p>@TempData["error"]</p>
+            </div>
+        }
+        <div class="card mb-4">
+            <header class="card-header">
+                <div class="row gx-3">
+                    <div class="col-lg-4 col-md-6 me-auto">
+                        <input type="text" placeholder="Search..." class="form-control" />
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select">
+                            <option>Status</option>
+                            <option>Active</option>
+                            <option>Disabled</option>
+                            <option>Show all</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select">
+                            <option>Show 20</option>
+                            <option>Show 30</option>
+                            <option>Show 40</option>
+                        </select>
+                    </div>
+                </div>
+            </header>
+            <!-- card-header end// -->
+
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var package in ViewBag.packages)
+                            {
+                                <tr>
+                                    <td>@package.Id</td>
+                                    <td>@package.Name</td>
+                                    <td>@package.Duration</td>
+                                    <td>₹@package.Price</td>
+                                    <td><span class="badge rounded-pill alert-info">@(package.Status ? "Show" : "Hide")</span></td>
+                                    <td class="text-end">
+                                        @*<a href="#" class="btn btn-sm font-sm rounded btn-brand">Detail</a>*@
+                                        <a class="btn btn-sm font-sm rounded btn-brand" asp-area="admin" asp-controller="package" asp-action="edit" asp-route-id="@package.Id"> <i class="material-icons md-edit"></i> Edit </a>
+                                        <a class="btn btn-sm font-sm rounded btn-danger" asp-area="admin" asp-controller="package" asp-action="delete" asp-route-id="@package.Id" onclick="return confirm('Are you sure?')"> <i class="material-icons md-delete_forever"></i> Delete </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- table-responsive //end -->
+            </div>
+            <!-- card-body end// -->
+        </div>
+        <!-- card end// -->
+        <div class="pagination-area mt-15 mb-50">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-start">
+                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link" href="#">16</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+</div>
+

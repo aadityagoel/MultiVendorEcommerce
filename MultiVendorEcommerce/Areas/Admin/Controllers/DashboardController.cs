@@ -5,6 +5,7 @@ namespace MultiVendorEcommerce.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin", AuthenticationSchemes = "Schema_Admin")]
     [Area("admin")]
+    [Route("admin")]
     [Route("admin/dashboard")]
     public class DashboardController : Controller
     {

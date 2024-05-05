@@ -19,6 +19,8 @@ namespace MultiVendorEcommerce
             // Register the configuration
             services.AddSingleton(Configuration);
 
+            services.AddRazorPages();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultScheme = "Schema_Customer";
@@ -42,8 +44,13 @@ namespace MultiVendorEcommerce
                 options.AccessDeniedPath = "/customer/login/accessDenied";
             });
 
+
             //// Add services to the container.
             services.AddControllersWithViews();
+
+
+            services.AddControllersWithViews().AddSessionStateTempDataProvider();
+            services.AddSession();
 
             // Retrieve the connection string from the configuration
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
@@ -74,6 +81,8 @@ namespace MultiVendorEcommerce
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
+
+            app.UseSession();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -111,6 +120,7 @@ namespace MultiVendorEcommerce
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
